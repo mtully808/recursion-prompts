@@ -175,10 +175,44 @@ var exponent = function(base, exp) {
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
 var powerOfTwo = function(n) {
+  // Edge
+  if (n === 0) {
+    return false;
+  }
+
+  // Base
+  if (n === 1) {
+    return true;
+  }
+
+  if (!Number.isInteger(n)) {
+    return false;
+  }
+
+  // Recursive
+  var halved = n / 2;
+
+  return powerOfTwo(halved);
 };
 
 // 9. Write a function that reverses a string.
 var reverse = function(string) {
+  // Edge
+  if (string.length === 0) {
+    return '';
+  }
+
+  var stringcopy = string;
+  var lastChar = stringcopy[stringcopy.length - 1];
+
+  // Base
+  if (stringcopy.length === 1) {
+    return stringcopy;
+  }
+
+  // Recursive
+  stringcopy = stringcopy.substring(0, stringcopy.length - 1);
+  return (lastChar + reverse(stringcopy));
 };
 
 // 10. Write a function that determines if a string is a palindrome.
