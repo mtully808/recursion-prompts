@@ -110,6 +110,34 @@ var sumBelow = function(n) {
 // 6. Get the integers within a range (x, y).
 // range(2,9); // [3,4,5,6,7,8]
 var range = function(x, y) {
+  if (x === undefined || y === undefined) {
+    return [];
+  }
+
+  if (x === y || (y - x === 1)) {
+    return [];
+  }
+
+  var arr = [];
+  var start;
+  var end;
+
+  if (x > y) {
+    start = x - 1;
+    end = y;
+  } else {
+    start = x + 1;
+    end = y;
+  }
+  // Base
+  if (start === end) {
+    return arr;
+  }
+
+  arr.push(start);
+
+  return arr.concat(range(start, end));
+
 };
 
 // 7. Compute the exponent of a number.
