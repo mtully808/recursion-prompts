@@ -264,6 +264,29 @@ var modulo = function(x, y) {
 // 12. Write a function that multiplies two numbers without using the * operator or
 // Math methods.
 var multiply = function(x, y) {
+  if (y === 0 || x === 0) {
+    return 0;
+  }
+
+  var yApproachingZero = y;
+  var sum = x;
+
+  if (y < 0) {
+    sum = x - x - x;
+    yApproachingZero = y - y - y;
+  }
+
+  if (yApproachingZero > 0) {
+    yApproachingZero--;
+  } else {
+    yApproachingZero++;
+  }
+
+  if (yApproachingZero === 0) {
+    return sum;
+  }
+
+  return (sum += multiply(sum, yApproachingZero));
 };
 
 // 13. Write a function that divides two numbers without using the / operator or
